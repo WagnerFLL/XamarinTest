@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AluraApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,11 @@ namespace AluraApp.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class DetalheView : ContentPage
 	{
-		public DetalheView ()
+        Veiculo choice;
+		public DetalheView (Veiculo veiculo)
 		{
 			InitializeComponent ();
+            this.choice = veiculo;
 		}
 	}
 }
