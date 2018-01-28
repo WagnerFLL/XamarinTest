@@ -11,20 +11,15 @@ using Xamarin.Forms.Xaml;
 namespace AluraApp.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class DetalheView : ContentPage
+	public partial class Agendameto : ContentPage
 	{
-        public Veiculo Choice { get; set; }
+        public Veiculo Veiculo { get; set; }
 
-        public DetalheView (Veiculo veiculo)
+		public Agendameto (Veiculo veiculo)
 		{
 			InitializeComponent ();
-            this.Choice = veiculo;
+            this.Veiculo = veiculo;
             this.BindingContext = this;
-		}
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new Agendameto(this.Choice));
         }
-    }
+	}
 }

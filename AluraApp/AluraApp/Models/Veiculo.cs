@@ -6,14 +6,18 @@ namespace AluraApp.Models
 {
     public class Veiculo
     {
-        public decimal Preco;
-        public string Modelo;
-        public string PrecoStr;
-
+        public decimal Preco { get; set; }
+        public string Modelo { get; set; }
+        public string PrecoStr
+        {
+            get
+            {
+                return String.Format("R$ {0}",Convert.ToString(Preco));
+            }
+        }
         public override string ToString()
         {
             return this.Modelo;
         }
-        
     }
 }

@@ -5,10 +5,24 @@
              x:Class="AluraApp.Views.ListagemView"
              Title="AppAlura">
 
-    <ListView Margin="20"
-              x:Name="listViewVeiculos"
+    <ListView x:Name="listViewVeiculos"
+              ItemsSource="{Binding VeiculosList}"
               ItemTapped="listViewVeiculos_ItemTapped"
-              ItemsSource="{Binding veiculosList}">
+              Margin="20"
+              >
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Modelo}" FontSize="Medium"></Label>
+                            <Label Text="-"></Label>
+                            <Label Text="{Binding PrecoStr}" FontSize="Medium"></Label>
+                        </StackLayout>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
     </ListView>
 
 </ContentPage>
