@@ -3,11 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AluraApp.Views.DetalheView"
              Title="{Binding Choice.Modelo}">
-    <ContentPage.Content>
+
+    <StackLayout Padding="25">
+
+        <TableView Intent="Settings">
+            <TableRoot>
+                <TableSection Title="Acessórios">
+                    <SwitchCell Text="{Binding Choice.FreioABS}" On="{Binding TemFreio}"></SwitchCell>
+                    <SwitchCell Text="{Binding Choice.MP3Player}" On="{Binding TemMP3}"></SwitchCell>
+                    <SwitchCell Text="{Binding Choice.ArCondicionado}" On="{Binding TemAR}"></SwitchCell>
+                    <TextCell Text="{Binding PrecoT}"></TextCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+        
         <Button x:Name="ButtonNext"
                 Text="Próximo"
                 VerticalOptions="End"
                 Clicked="Button_Clicked"
                 HorizontalOptions="Center"></Button>
-    </ContentPage.Content>
+    </StackLayout>
 </ContentPage>
