@@ -14,31 +14,59 @@ namespace AluraApp.Views
 	public partial class DetalheView : ContentPage
 	{
         public Veiculo Choice { get; set; }
-        public bool TemFreio;
-        public bool TemAr;
-        public bool TemMP3;
-        
-        public decimal PrecoT
+
+        bool temFreio;
+        public bool TemFreio
         {
             get
             {
-                decimal preco = Choice.Preco;
-                if (TemAr) preco += Choice.ArCondicionadoValue;
-                if (TemFreio) preco += Choice.FreioABSValue;
-                if (TemMP3) preco += Choice.MP3PlayerValue;
-                return preco;
+                return temFreio;
             }
-
             set
             {
-                PrecoT = value;
+                temFreio = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(PrecoStr));
+            }
+        }
+
+        bool temAr;
+        public bool TemArCondicionado
+        {
+            get
+            {
+                return temAr;
+            }
+            set
+            {
+                temAr = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(PrecoStr));
+            }
+        }
+
+        bool temMP3;
+        public bool TemMP3Player
+        {
+            get
+            {
+                return temMP3;
+            }
+            set
+            {
+                temMP3 = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(PrecoStr));
             }
         }
         public string PrecoStr
         {
             get
             {
-                return String.Format("Total: R$ {0}",this.PrecoT);
+                return String.Format("Total: R$ {0}",this.Choice.Preco +
+                    (temAr ? Choice.ArCondicionadoValue : 0) +
+                    (temFreio ? Choice.FreioABSValue : 0) + 
+                    (temMP3 ? Choice.MP3PlayerValue : 0));
             }
         }
         
@@ -46,7 +74,6 @@ namespace AluraApp.Views
 		{
 			InitializeComponent ();
             this.Choice = veiculo;
-            this.PrecoT = Choice.Preco;
             this.BindingContext = this;
 		}
 

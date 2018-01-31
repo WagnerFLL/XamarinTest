@@ -29,7 +29,7 @@ namespace AluraApp.Views
 
         private void listViewVeiculos_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            Navigation.PushAsync( new DetalheView( (Veiculo)e.Item ));
+            Navigation.PushAsync(new DetalheView((Veiculo)e.Item));   
         }
     }
 }
